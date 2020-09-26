@@ -11,7 +11,7 @@
 
         public override string Error { get => "Ошибка"; }
 
-        public override string EnterCodePackIndex { get => "Введите номер номер программной группы"; }
+        public override string EnterCodePackIndex { get => "Введите номер программной группы"; }
 
         public override string InvalidCodePackIndex { get => "Неверный номер программной группы"; }
 

@@ -15,8 +15,8 @@ namespace ConsoleInteractions
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            LanguagePhrases phrases = new EnglishPhrases();
-            // LanguagePhrases phrases = new RussianPhrases();
+            // LanguagePhrases phrases = new EnglishPhrases();
+            LanguagePhrases phrases = new RussianPhrases();
 
             Console.WriteLine(phrases.Welcome);
 
@@ -79,6 +79,8 @@ namespace ConsoleInteractions
                     innerState = ProgramState.Stop;
                 }
                 while (innerState == ProgramState.Run);
+
+                Console.WriteLine();
 
                 // Since many codes with the same index are supported, we have an array,
                 // however, their inputs are identical and should be entered once.
