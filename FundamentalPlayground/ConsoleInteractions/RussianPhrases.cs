@@ -23,6 +23,8 @@
 
         public override string InvalidParameter { get => "Неверный параметр"; }
 
+        public override string ExecutionError { get => "Ошибка исполнения"; }
+
         public override string CodeExecuted { get => "Код выполнен"; }
 
         public override string ShouldRunAgain { get => "Выполнить другую программу? \"Y\" или \"N\""; }

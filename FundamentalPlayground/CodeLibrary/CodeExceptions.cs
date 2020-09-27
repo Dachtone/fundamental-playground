@@ -29,7 +29,12 @@ namespace CodeLibrary
         public string GetMessage(string languageCode)
         {
             if (!TranslatedMessage.ContainsKey(languageCode))
-                languageCode = defaultLanguageCode;
+            {
+                if (TranslatedMessage.ContainsKey(defaultLanguageCode))
+                    return TranslatedMessage[defaultLanguageCode];
+                else
+                    return string.Empty;
+            }
 
             return TranslatedMessage[languageCode];
         }

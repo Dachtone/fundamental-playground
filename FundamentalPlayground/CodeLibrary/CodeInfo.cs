@@ -117,7 +117,7 @@ namespace CodeLibrary
         /// </summary>
         public object Invoke()
         {
-            return method.Invoke(pack, null);
+            return Invoke(null);
         }
         
         /// <summary>
@@ -125,7 +125,17 @@ namespace CodeLibrary
         /// </summary>
         public object Invoke(object[] parameters)
         {
-            return method.Invoke(pack, parameters);
+            try
+            {
+                return method.Invoke(pack, parameters);
+            }
+            catch (TargetInvocationException exception)
+            {
+                if (exception.InnerException != null)
+                    throw exception.InnerException;
+                else
+                    throw exception;
+            }
         }
     }
 }

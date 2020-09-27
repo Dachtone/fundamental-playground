@@ -23,6 +23,8 @@
 
         public override string InvalidParameter { get => "Invalid parameter"; }
 
+        public override string ExecutionError { get => "Execution error"; }
+
         public override string CodeExecuted { get => "Code executed successfully"; }
 
         public override string ShouldRunAgain { get => "Run another program? \"Y\" or \"N\""; }

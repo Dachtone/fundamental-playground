@@ -122,10 +122,25 @@ namespace ConsoleInteractions
                 foreach (var code in codes)
                 {
                     object returnValue = null;
-                    if (parameters.Length == 0)
-                        returnValue = code.Invoke();
-                    else
-                        returnValue = code.Invoke(parameters);
+
+                    try
+                    {
+                        if (parameters.Length == 0)
+                            returnValue = code.Invoke();
+                        else
+                            returnValue = code.Invoke(parameters);
+                    }
+                    catch (CodeExecutionException exception)
+                    {
+                        Console.Write($"{ phrases.ExecutionError }!");
+
+                        string exceptionMessage = exception.GetMessage(phrases.LanguageCode);
+                        if (exceptionMessage.Length != 0)
+                            Console.Write($" { exceptionMessage }."); // An extra space at the start
+
+                        Console.WriteLine();
+                        break;
+                    }
 
                     string returnMessage = code.GetReturnMessage(phrases.LanguageCode);
                     bool hasMessage = returnMessage.Length != 0;

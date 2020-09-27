@@ -23,6 +23,8 @@
 
         public abstract string InvalidParameter { get; }
 
+        public abstract string ExecutionError { get; }
+
         public abstract string CodeExecuted { get; }
 
         public abstract string ShouldRunAgain { get; }

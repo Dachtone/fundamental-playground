@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CodeLibrary;
 
 namespace Codes
@@ -6,6 +7,7 @@ namespace Codes
     [CodePackIndex(4)]
     public class CodePack4 : CodePack
     {
+        #region Code 1
         [CodeIndex(1, Order = 0)]
         [InputMessage(0, "en", "Enter the length of the first side of the rectangle")]
         [InputMessage(0, "ru", "Введите длину первой стороны прямоугольника")]
@@ -15,6 +17,15 @@ namespace Codes
         [OutputMessage("ru", "Площадь прямоугольника")]
         public double Area(double a, double b)
         {
+            if (a <= 0 || b <= 0)
+            {
+                throw new CodeExecutionException(new Dictionary<string, string>()
+                {
+                    { "en", "The length cannot be zero or negative" },
+                    { "ru", "Длина не может быть равна нулю или отрицательному числу" }
+                });
+            }
+
             return a * b;
         }
 
@@ -25,7 +36,9 @@ namespace Codes
         {
             return 2.0 * (a + b);
         }
+        #endregion
 
+        #region Code 2
         [CodeIndex(2)]
         [InputMessage(0, "en", "Enter the diameter of a circle")]
         [InputMessage(0, "ru", "Введите диаметр окружности")]
@@ -33,10 +46,21 @@ namespace Codes
         [OutputMessage("ru", "Длина окружности")]
         public double Circumference(double d)
         {
+            if (d <= 0)
+            {
+                throw new CodeExecutionException(new Dictionary<string, string>()
+                {
+                    { "en", "The diameter cannot be zero or negative" },
+                    { "ru", "Диаметр не может быть равен нулю или отрицательному числу" }
+                });
+            }
+
             double pi = 3.14;
             return pi * d;
         }
+        #endregion
 
+        #region Code 3
         [CodeIndex(3)]
         [InputMessage(0, "en", "Enter the first number")]
         [InputMessage(0, "ru", "Введите первое число")]
@@ -48,7 +72,9 @@ namespace Codes
         {
             return (a + b) / 2;
         }
+        #endregion
 
+        #region Code 4
         [CodeIndex(4, Order = 0)]
         [InputMessage(0, "en", "Enter the first number")]
         [InputMessage(0, "ru", "Введите первое число")]
@@ -58,6 +84,15 @@ namespace Codes
         [OutputMessage("ru", "Сумма квадратов")]
         public double SquareSum(double a, double b)
         {
+            if (a == 0 || b == 0)
+            {
+                throw new CodeExecutionException(new Dictionary<string, string>()
+                {
+                    { "en", "Numbers must be non zero" },
+                    { "ru", "Числа должны быть ненулевыми" }
+                });
+            }
+
             return Math.Pow(a, 2) + Math.Pow(b, 2);
         }
 
@@ -84,7 +119,9 @@ namespace Codes
         {
             return Math.Pow(a, 2) / Math.Pow(b, 2);
         }
+        #endregion
 
+        #region Code 5
         [CodeIndex(5, Order = 0)]
         [InputMessage(0, "en", "Enter the first number")]
         [InputMessage(0, "ru", "Введите первое число")]
@@ -94,6 +131,15 @@ namespace Codes
         [OutputMessage("ru", "Сумма модулей")]
         public double AbsoluteSum(double a, double b)
         {
+            if (a == 0 || b == 0)
+            {
+                throw new CodeExecutionException(new Dictionary<string, string>()
+                {
+                    { "en", "Numbers must be non zero" },
+                    { "ru", "Числа должны быть ненулевыми" }
+                });
+            }
+
             return Math.Abs(a) + Math.Abs(b);
         }
 
@@ -120,5 +166,6 @@ namespace Codes
         {
             return Math.Abs(a) / Math.Abs(b);
         }
+        #endregion
     }
 }
