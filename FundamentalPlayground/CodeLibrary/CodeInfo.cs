@@ -125,6 +125,7 @@ namespace CodeLibrary
         /// </summary>
         public object Invoke(object[] parameters)
         {
+            // Reflection's Invoke method hides exceptions, lets unpack an inner exception if there is one
             try
             {
                 return method.Invoke(pack, parameters);

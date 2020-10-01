@@ -69,13 +69,24 @@ namespace CodeLibrary
             // Sort by the order
             if (codesList.Count > 1)
             {
-                codesList.Sort((CodeInfo firstCode, CodeInfo secondCode) =>
+                // Standard Sort method hides exceptions, lets unpack an inner exception if there is one
+                try
                 {
-                    if (firstCode.Order == secondCode.Order)
-                        throw new MultipleCodesWithTheSameIndexException();
+                    codesList.Sort((CodeInfo firstCode, CodeInfo secondCode) =>
+                    {
+                        if (firstCode.Order == secondCode.Order)
+                            throw new MultipleCodesWithTheSameIndexException();
 
-                    return firstCode.Order - secondCode.Order;
-                });
+                        return firstCode.Order - secondCode.Order;
+                    });
+                }
+                catch (InvalidOperationException exception)
+                {
+                    if (exception.InnerException != null)
+                        throw exception.InnerException;
+                    else
+                        throw exception;
+                }
             }
 
             return codesList.ToArray();
